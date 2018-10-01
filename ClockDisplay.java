@@ -25,7 +25,7 @@ public class ClockDisplay
      */
     public ClockDisplay()
     {
-        hours = new NumberDisplay(12);
+        hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
         meridian = "AM";
         updateDisplay();
@@ -38,7 +38,7 @@ public class ClockDisplay
      */
     public ClockDisplay(int hour, int minute, String newMeridian)
     {
-        hours = new NumberDisplay(12);
+        hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
         meridian = newMeridian;
  
