@@ -73,6 +73,27 @@ public class ClockDisplay
         return displayString;
     }
     
+    public String get24HourInternalDisplay()
+    {
+        if (hours.getValue() < 12 & hours.getValue() != 0)
+            return displayString + " AM" ;
+        else if (hours.getValue() == 0)
+        {
+            hours.setValue(hours.getValue() + 12);
+            updateDisplay();
+            return displayString + " AM" ;
+        }
+        else if (hours.getValue() == 12)
+        {
+            return displayString + " PM";
+        }
+        else
+        {
+            hours.setValue(hours.getValue() - 12);
+            updateDisplay();
+            return displayString + " PM"; 
+        }
+    }
     /**
      * Update the internal string that represents the display.
      */
