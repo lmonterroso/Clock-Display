@@ -16,7 +16,7 @@ public class ClockDisplay
 {
     private NumberDisplay hours;
     private NumberDisplay minutes;
-    private String meridian;
+    private boolean meridian;
     private String displayString;    // simulates the actual display
     
     /**
@@ -27,7 +27,6 @@ public class ClockDisplay
     {
         hours = new NumberDisplay(13);
         minutes = new NumberDisplay(60);
-        meridian = "AM";
         updateDisplay();
     }
 
@@ -36,13 +35,13 @@ public class ClockDisplay
      * creates a new clock set at the time specified by the 
      * parameters.
      */
-    public ClockDisplay(int hour, int minute, String newMeridian)
+    public ClockDisplay(int hour, int minute, boolean morning)
     {
-        hours = new NumberDisplay(13);
+        hours = new NumberDisplay(12);
         minutes = new NumberDisplay(60);
-        meridian = newMeridian;
+        meridian = morning;
  
-        setTime(hour, minute);
+        setTime(hour, minute, morning);
     }
 
     /**
@@ -62,10 +61,11 @@ public class ClockDisplay
      * Set the time of the display to the specified hour and
      * minute.
      */
-    public void setTime(int hour, int minute)
+    public void setTime(int hour, int minute, boolean morning)
     {
         hours.setValue(hour);
         minutes.setValue(minute);
+        meridian = morning;
         updateDisplay();
     }
 
@@ -79,7 +79,28 @@ public class ClockDisplay
     
     public String get12HourInternalDisplay()
     {
-        return displayString + " " + meridian;
+        if (meridian)
+        {
+            if (hours.getValue() == 0)
+            {
+                return (hours.getValue() + 12) + ":" + minutes.getDisplayValue() + " AM";
+            }
+            else 
+            {
+                return displayString + " AM";
+            }
+        }
+        else 
+        {
+            if (hours.getValue() == 0)
+            {
+                return (hours.getValue() + 12) + ":" + minutes.getDisplayValue() + " PM";
+            }
+            else 
+            {
+                return displayString + " PM";
+            }
+        }
     }
     
     /**
