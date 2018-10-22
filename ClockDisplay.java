@@ -75,13 +75,11 @@ public class ClockDisplay
     
     public String get24HourInternalDisplay()
     {
-        if (hours.getValue() < 12 & hours.getValue() != 0)
+        if (hours.getValue() < 12 && hours.getValue() != 0)
             return displayString + " AM" ;
         else if (hours.getValue() == 0)
         {
-            hours.setValue(hours.getValue() + 12);
-            updateDisplay();
-            return displayString + " AM" ;
+            return "12:" + minutes.getDisplayValue() + " AM";
         }
         else if (hours.getValue() == 12)
         {
@@ -89,9 +87,7 @@ public class ClockDisplay
         }
         else
         {
-            hours.setValue(hours.getValue() - 12);
-            updateDisplay();
-            return displayString + " PM"; 
+            return (hours.getValue() - 12) + ":" + minutes.getDisplayValue() + " PM"; 
         }
     }
     /**
