@@ -83,7 +83,7 @@ public class ClockDisplay
         {
             if (hours.getValue() == 0)
             {
-                return (hours.getValue() + 12) + ":" + minutes.getDisplayValue() + " AM";
+                return (hours.getDisplayValue() + 12) + ":" + minutes.getDisplayValue() + " AM";
             }
             else 
             {
@@ -94,7 +94,7 @@ public class ClockDisplay
         {
             if (hours.getValue() == 0)
             {
-                return (hours.getValue() + 12) + ":" + minutes.getDisplayValue() + " PM";
+                return (hours.getDisplayValue() + 12) + ":" + minutes.getDisplayValue() + " PM";
             }
             else 
             {
